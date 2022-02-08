@@ -1,0 +1,41 @@
+openapi: 3.0.1
+info:
+  title: micronaut-openapi
+  version: v1
+paths:
+  /openapi:
+    post:
+      summary: OpenAPI example
+      operationId: postRaw
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dto'
+        required: true
+      responses:
+        "204":
+          description: postRaw 204 response
+components:
+  schemas:
+    Dto:
+      required:
+      - idJavadoc
+      type: object
+      properties:
+        id:
+          maximum: 99999999
+          minimum: 0
+          maxLength: 8
+          type: integer
+          description: Description set through @Schema annotation. Causes attribute
+            not being marked as required
+          format: int32
+          example: 526630
+        idJavadoc:
+          maximum: 99999999
+          minimum: 0
+          type: integer
+          format: int32
+      description: Data Transfer Object
